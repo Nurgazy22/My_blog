@@ -66,7 +66,7 @@ class PostViewSet(ModelViewSet):
         )
         rating = Rating.objects.filter(
             author=request.user,
-            post=pk
+            post=pk    
         ).first()
         if serializer.is_valid(raise_exception=True):
             if rating and request.method == 'POST':

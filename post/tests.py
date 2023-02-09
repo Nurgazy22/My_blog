@@ -11,19 +11,9 @@ class PostTest(APITestCase):
 
     def setUp(self):
         self.factory = APIRequestFactory()
-        self.category = Category.objects.create(
-            title='cat1'
-        )
-        user = User.objects.create_user(
-            email='test@gmail.com',
-            password='1234',
-            is_active=True,
-            name='Test',
-            last_name='User'
-        )
-        img = File(open(
-            'posts/Screenshot_from_2021-09-15_20-07-58.png',
-            'rb'))
+        self.category = Category.objects.create(title='cat1')
+        user = User.objects.create_user(email='test@gmail.com',password='1234',is_active=True,name='Test',last_name='User')
+        img = File(open('posts/Screenshot_from_2021-09-15_20-07-58.png','rb'))
         posts = [
             Post(author=user, body='new post',
                  title='post1', image=img,
@@ -80,6 +70,12 @@ class PostTest(APITestCase):
         assert Post.objects.filter(
             author=user, body=data['body']
         ).exists()
+
+
+
+
+
+
 
 
 #     test_update, test_delete,
